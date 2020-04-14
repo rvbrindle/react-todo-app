@@ -13,6 +13,14 @@ class UserInput extends Component {
     this.setState({ value: event.target.value });
   }
 
+  checkInput = () => {
+    if (!this.state.value) {
+      alert("Please add text");
+    } else {
+      this.props.addTodoItem(this.state.value);
+    }
+  };
+
   render() {
     return (
       <div>
@@ -25,7 +33,7 @@ class UserInput extends Component {
         <button
           type="button"
           onClick={() => {
-            this.props.addTodoItem(this.state.value);
+            this.checkInput();
             this.setState({ value: "" });
           }}
         >
