@@ -1,0 +1,69 @@
+@import '../scss/vars';
+
+.toDo {
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    display: block;
+    float: left;
+    background-color: $color-primary;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 8px;
+
+    p {
+        word-wrap: break-word;
+    }
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    display:block;
+    list-style: none;
+    text-align: center;
+    width: 100%;
+    font-size: 25px;
+    
+
+    &__btn {
+        display: block;
+        width: 100%;
+
+        :hover {
+            cursor: pointer;
+            transform: scale(1.1);
+            box-shadow: 1px 2px 1px $color-dark;
+            color: white;
+            transition: .5s;
+
+        }
+
+        & * {
+            padding: 0px 20px;
+            border-radius: 8px; 
+            z-index: 2;
+        }
+
+        &_del{
+            float: left;
+            background-color: $color-reject;
+            color: $color-reject-light;
+        }
+
+        &_done{
+            float: right;  
+            background-color: $color-accept;
+            color: $color-accept-light;
+        }
+    }
+
+    li {
+        margin: 5px;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: $color-secondary;
+        color: $color-light;
+    }
+}
+
