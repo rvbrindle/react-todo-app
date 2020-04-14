@@ -1,9 +1,13 @@
 import React from "react";
 
 const doneList = (props) => {
-  console.log(props.time);
+  console.log(props);
   const doneList = props.completed.map((item, index) => {
-    return <li key={index}>completed</li>;
+    return (
+      <li key={index}>
+        {item} {props.time[index]}
+      </li>
+    );
   });
   return <ul>{doneList}</ul>;
 };

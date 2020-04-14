@@ -8,7 +8,7 @@ class App extends Component {
   state = {
     toDos: [],
     completed: [],
-    time: "",
+    time: [],
   };
 
   addTodoItem = (toDoItem) => {
@@ -31,26 +31,31 @@ class App extends Component {
 
     this.deleteToDoItem(key); // remove selected element
 
+    let timeStamp = this.getTime();
+
     this.setState({
       completed: [...this.state.completed, completedItem],
-      time: this.getTime(),
+      time: [...this.state.time, timeStamp],
     });
-
-    console.log(this.state.time);
   };
 
   getTime = () => {
     let date = new Date();
 
-    const time = {
-      year: date.getFullYear(),
-      month: date.getMonth(),
-      day: date.getDate(),
-      hour: date.getHours(),
-      mins: date.getMinutes(),
-    };
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDate();
+    let hour = date.getHours();
+    hour = ("0" + hour).slice(-2); // 2 digit time
 
-    return time;
+    let mins = date.getMinutes();
+    mins = ("0" + mins).slice(-2); // 2 digit time
+
+    let secs = date.getSeconds();
+
+    let timeStamp = `Completed on ${day}/${month}/${year} at ${hour}:${mins}:${secs}s`;
+
+    return timeStamp;
   };
 
   render() {
