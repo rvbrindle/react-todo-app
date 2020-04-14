@@ -8,6 +8,7 @@ class App extends Component {
   state = {
     toDos: [],
     completed: [],
+    time: "",
   };
 
   addTodoItem = (toDoItem) => {
@@ -32,7 +33,24 @@ class App extends Component {
 
     this.setState({
       completed: [...this.state.completed, completedItem],
+      time: this.getTime(),
     });
+
+    console.log(this.state.time);
+  };
+
+  getTime = () => {
+    let date = new Date();
+
+    const time = {
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      day: date.getDate(),
+      hour: date.getHours(),
+      mins: date.getMinutes(),
+    };
+
+    return time;
   };
 
   render() {
@@ -45,7 +63,10 @@ class App extends Component {
           deleteToDoItem={this.deleteToDoItem}
           completedItem={this.completedItem}
         ></ToDoList>
-        <DoneList completed={this.state.completed}></DoneList>
+        <DoneList
+          completed={this.state.completed}
+          time={this.state.time}
+        ></DoneList>
       </div>
     );
   }
